@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: Spring3_oauth2_login_google_github
+  # MySQL DB
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring3_oauth2?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: spring3_oauth2
+    password: spring3_oauth2password
+    driverClassName: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode:always
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+  # /MySQL DB
+  security:
+    oauth2:
+      client:
+        registration:
+          # Google Login
+          # Google cloud -> Enabled API & services -> Credentials  -> Crear ID de cliente de OAuth
+          #
+          #> https://console.cloud.google.com/apis/credentials
+          #   Tipo de aplicación:
+          # Aplicación web
+          #   Nombre:
+          # Google client
+          #   URIs de redireccionamiento autorizados:
+          # http://localhost:8080/login/oauth2/code/google
+          google:
+            #:g504507095371-l0nuhfp2dru9bec2qrmoapej62d3f2s?.apps.googleusercontent.com
+            client-id: ${GOOGLE_CLIENT_ID}
+            #:sGOCSPX-zKMJTmim_BFctPieKajL2WrbORs?
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+          # GitHub Login
+          # https://github.com/settings/applications/new
+          #   Application name:
+          # Spring security social login
+          #   Homepage URL:
+          # http://localhost:8080
+          #   Application description:
+          # Application description is optional
+          # This is displayed to all users of your application.
+          #   Authorization callback URL:
+          # http://localhost:8080/login/oauth2/code/github
+          github:
+            #:bOv23linBMDQk1xyS51u?
+            client-id: ${GITHUB_CLIENT_ID}
+            #:b447860a3f3495afb94d0c611cf9899f63fc796a?
+            client-secret: ${GITHUB_CLIENT_SECRET}
+            scope:
+              - user:email
+              - read:user
+
+gg:
+  jte:
+    developmentMode: true
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG # ERROR #change to DEBUG or INFO for more information about spring security
+
+
