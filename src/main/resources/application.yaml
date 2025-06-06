@@ -68,4 +68,8 @@ logging:
       springframework:
         security: DEBUG # ERROR #change to DEBUG or INFO for more information about spring security
 
-
+server:
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
