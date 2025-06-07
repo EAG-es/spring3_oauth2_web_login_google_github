@@ -8,7 +8,7 @@
 		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>dev.danvega</groupId>
+	<groupId>inser.spring</groupId>
 	<artifactId>spring3_oauth2_web_login_google_github</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>jte-login</name>
